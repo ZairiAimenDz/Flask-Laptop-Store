@@ -1,0 +1,630 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Adding A New Item / Modifying Item</legend>  
+                <h2> Genral </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.manufact.label(class="form-control-label") }}
+                    {% if form.manufact.errors %}
+                        {{ form.manufact(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.manufact.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.manufact(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.product_name.label(class="form-control-label") }}
+                    {% if form.product_name.errors %}
+                        {{ form.product_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.product_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.product_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.product_price.label(class="form-control-label") }}
+                    {% if form.product_price.errors %}
+                        {{ form.product_price(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.product_price.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.product_price(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.prd_des.label(class="form-control-label") }}
+                    {% if form.prd_des.errors %}
+                        {{ form.prd_des(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.prd_des.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.prd_des(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <!-- Photos To Add  -->
+                <h2> Photos</h2>
+                <div class="form-group">
+                    {{ form.img1.label() }}
+                    {{ form.img1(class='form-control-file') }}
+                    {% if form.img1.errors %}
+                        {% for error in form.img1.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.img2.label() }}
+                    {{ form.img2(class='form-control-file') }}
+                    {% if form.img2.errors %}
+                        {% for error in form.img2.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.img3.label() }}
+                    {{ form.img3(class='form-control-file') }}
+                    {% if form.img3.errors %}
+                        {% for error in form.img3.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.img4.label() }}
+                    {{ form.img4(class='form-control-file') }}
+                    {% if form.img4.errors %}
+                        {% for error in form.img4.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.img5.label() }}
+                    {{ form.img5(class='form-control-file') }}
+                    {% if form.img5.errors %}
+                        {% for error in form.img5.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.img6.label() }}
+                    {{ form.img6(class='form-control-file') }}
+                    {% if form.img6.errors %}
+                        {% for error in form.img6.errors %}
+                        <span class="text-danger">{{ error }}</span> <br>
+                        {% endfor %} 
+                    {% endif %}
+                </div>
+                <!-- Photos To Add End -->
+                <hr>
+                <h2>Processor :</h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.cpu_name.label(class="form-control-label") }}
+                    {% if form.cpu_name.errors %}
+                        {{ form.cpu_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.cpu_gen.label(class="form-control-label") }}
+                    {% if form.cpu_gen.errors %}
+                        {{ form.cpu_gen(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_gen.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_gen(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.cpu_cores.label(class="form-control-label") }}
+                    {% if form.cpu_cores.errors %}
+                        {{ form.cpu_cores(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_cores.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_cores(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.cpu_threads.label(class="form-control-label") }}
+                    {% if form.cpu_threads.errors %}
+                        {{ form.cpu_threads(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_threads.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_threads(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.cpu_hypthr(class="form-check-input") }}
+                    {{ form.cpu_hypthr.label(class="form-check-label") }}
+                </div>
+                <div class="form-group">
+                    {{ form.cpu_sc_score.label(class="form-control-label") }}
+                    {% if form.cpu_sc_score.errors %}
+                        {{ form.cpu_sc_score(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_sc_score.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_sc_score(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.cpu_mc_score.label(class="form-control-label") }}
+                    {% if form.cpu_mc_score.errors %}
+                        {{ form.cpu_mc_score(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.cpu_mc_score.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.cpu_mc_score(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <hr>
+                <h2> Screen </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.screen_size.label(class="form-control-label") }}
+                    {% if form.screen_size.errors %}
+                        {{ form.screen_size(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.screen_size.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.screen_size(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.screen_res.label(class="form-control-label") }}
+                    {% if form.screen_res.errors %}
+                        {{ form.screen_res(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.screen_res.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.screen_res(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.screen_type.label(class="form-control-label") }}
+                    {% if form.screen_type.errors %}
+                        {{ form.screen_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.screen_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.screen_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <hr>
+                <h2> RAM </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.ram_amm.label(class="form-control-label") }}
+                    {% if form.ram_amm.errors %}
+                        {{ form.ram_amm(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram_amm.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram_amm(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.ram_slots_filled.label(class="form-control-label") }}
+                    {% if form.ram_slots_filled.errors %}
+                        {{ form.ram_slots_filled(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram_slots_filled.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram_slots_filled(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.ram_config.label(class="form-control-label") }}
+                    {% if form.ram_config.errors %}
+                        {{ form.ram_config(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram_config.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram_config(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.ram_type.label(class="form-control-label") }}
+                    {% if form.ram_type.errors %}
+                        {{ form.ram_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.ram_speed.label(class="form-control-label") }}
+                    {% if form.ram_speed.errors %}
+                        {{ form.ram_speed(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.ram_speed.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.ram_speed(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <hr>
+                <h2> Storage </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.strg_amm.label(class="form-control-label") }}
+                    {% if form.strg_amm.errors %}
+                        {{ form.strg_amm(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_amm.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_amm(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.strg_type.label(class="form-control-label") }}
+                    {% if form.strg_type.errors %}
+                        {{ form.strg_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.strg_interface.label(class="form-control-label") }}
+                    {% if form.strg_interface.errors %}
+                        {{ form.strg_interface(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_interface.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_interface(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.strg_sec(class="form-check-input") }}
+                    {{ form.strg_sec.label(class="form-check-label") }}
+                </div>
+                <div class="form-group">
+                    {{ form.strg_sec_amm.label(class="form-control-label") }}
+                    {% if form.strg_sec_amm.errors %}
+                        {{ form.strg_sec_amm(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_sec_amm.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_sec_amm(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.strg_sec_type.label(class="form-control-label") }}
+                    {% if form.strg_sec_type.errors %}
+                        {{ form.strg_sec_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_sec_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_sec_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.strg_sec_inter.label(class="form-control-label") }}
+                    {% if form.strg_sec_inter.errors %}
+                        {{ form.strg_sec_inter(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.strg_sec_inter.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.strg_sec_inter(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <hr>
+                <h2> Graphics Card </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.gpu_name.label(class="form-control-label") }}
+                    {% if form.gpu_name.errors %}
+                        {{ form.gpu_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.gpu_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.gpu_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.gpu_vram.label(class="form-control-label") }}
+                    {% if form.gpu_vram.errors %}
+                        {{ form.gpu_vram(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.gpu_vram.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.gpu_vram(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.dgpu(class="form-check-input") }}
+                    {{ form.dgpu.label(class="form-check-label") }}
+                </div>
+                <div class="form-group">
+                    {{ form.dgpu_name.label(class="form-control-label") }}
+                    {% if form.dgpu_name.errors %}
+                        {{ form.dgpu_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.dgpu_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.dgpu_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.dgpu_vram.label(class="form-control-label") }}
+                    {% if form.dgpu_vram.errors %}
+                        {{ form.dgpu_vram(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.dgpu_vram.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.dgpu_vram(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.dgpu_vram_type.label(class="form-control-label") }}
+                    {% if form.dgpu_vram_type.errors %}
+                        {{ form.dgpu_vram_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.dgpu_vram_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.dgpu_vram_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                
+                <hr>
+                <h2> Ports </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.available_ports.label(class="form-control-label") }}
+                    {% if form.available_ports.errors %}
+                        {{ form.available_ports(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.available_ports.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.available_ports(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                
+
+                <hr>
+                <h2> Upgradability And Repairability </h2>
+                <hr class="rd">
+                <div class="form-check">
+                    {{ form.up_cpu(class="form-check-input") }}
+                    {{ form.up_cpu.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.up_gpu(class="form-check-input") }}
+                    {{ form.up_gpu.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.up_RAM(class="form-check-input") }}
+                    {{ form.up_RAM.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.up_Storage(class="form-check-input") }}
+                    {{ form.up_Storage.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.rep_battery(class="form-check-input") }}
+                    {{ form.rep_battery.label(class="form-check-label") }}
+                </div>
+
+
+                <hr>
+                <h2> Keyboard </h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.keyb_layout.label(class="form-control-label") }}
+                    {% if form.keyb_layout.errors %}
+                        {{ form.keyb_layout(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.keyb_layout.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.keyb_layout(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.keyb_backlit(class="form-check-input") }}
+                    {{ form.keyb_backlit.label(class="form-check-label") }}
+                </div>
+                <div class="form-check">
+                    {{ form.keyb_num(class="form-check-input") }}
+                    {{ form.keyb_num.label(class="form-check-label") }}
+                </div>
+
+                <hr>
+                <h2> LTE </h2>
+                <hr class="rd">
+                <div class="form-check">
+                    {{ form.lte_modem(class="form-check-input") }}
+                    {{ form.lte_modem.label(class="form-check-label") }}
+                </div>
+
+
+                <hr>
+                <h2> Battery</h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.battery_size.label(class="form-control-label") }}
+                    {% if form.battery_size.errors %}
+                        {{ form.battery_size(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.battery_size.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.battery_size(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.battery_life.label(class="form-control-label") }}
+                    {% if form.battery_life.errors %}
+                        {{ form.battery_life(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.battery_life.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.battery_life(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <hr>
+                <h2> Product State</h2>
+                <hr class="rd">
+                <div class="form-group">
+                    {{ form.product_state.label(class="form-control-label") }}
+                    {% if form.product_state.errors %}
+                        {{ form.product_state(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.product_state.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.product_state(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <hr>
+                <h2> Accessories</h2>
+                <hr class="rd">
+                <div class="form-check">
+                    {{ form.charger(class="form-check-input") }}
+                    {{ form.charger.label(class="form-check-label") }}
+                </div>
+                <div class="form-group">
+                    {{ form.extra_acc.label(class="form-control-label") }}
+                    {% if form.extra_acc.errors %}
+                        {{ form.extra_acc(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.extra_acc.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.extra_acc(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+</div>
+{% endblock %}

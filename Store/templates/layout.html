@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bs.css') }}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <!-- WebSite And Page Title -->
+    <title>{{ Store_name }} - {{ title }}</title>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+            <a class="navbar-brand mr-4" href="{{ url_for('home') }}">{{ Store_name }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+                
+
+                {% if not "comp1" in session %}
+                {% elif session["comp1"] > 0 %}
+                <a class="nav-item nav-link" href="{{ url_for('post',post_id=session["comp1"]) }}">Element1</a>                        
+                {% endif %}
+                
+                {% if (not "comp2" in session) %}
+                {% elif session["comp2"] > 0 %}
+                        <a class="nav-item nav-link" href="{{ url_for('post',post_id=session["comp2"]) }}">Element2</a>                          
+                {% endif %}
+         
+                <a class="nav-item nav-link" href="{{ url_for('compare') }}">Comparator</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if current_user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{{ url_for('profile') }}">Admin Profile</a>
+                    <a class="nav-item nav-link" href="{{ url_for('newpost') }}">Add New Post</a>
+                    <a class="nav-item nav-link" href="{{ url_for('register') }}">Register New Admin</a>
+                    <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{{ url_for('login') }}">Admin Login</a>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Of The Navigation Bar -->
+
+    <main role="main" class="container">
+
+        <!-- Message Alerts For Admin -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!-- The Code For Alert Messages Ends Here -->
+        
+        <!-- The Content Block -->
+        {% block content %}{% endblock %}
+        <!-- End Of The Content Block -->
+    </main>
+    
+
+
+    <script src="{{ url_for('static',filename='js/f1.js') }}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/f2.js') }}"" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/f3.js') }}" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

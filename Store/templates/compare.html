@@ -1,0 +1,289 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+    <h1>
+        Comparing {{ item1.manufact }} {{ item1.product_name }} VS {{ item2.manufact }} {{ item2.product_name }}
+        <hr>        
+    </h1>
+    <h3 class="bg-success">{{ item1.product_name }}</h3>
+    <h3 class="bg-primary">{{ item2.product_name }}</h3>
+    <h3>Price :</h3>
+    {% if item1.product_price > item2.product_price %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.product_price / item1.product_price)*100 }}%;" aria-valuenow="{{ item1.product_price }}" aria-valuemin="0" aria-valuemax="{{ item1.product_price }}">{{ item1.product_price }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.product_price / item1.product_price)*100 }}%;" aria-valuenow="{{ item2.product_price }}" aria-valuemin="0" aria-valuemax="{{ item1.product_price }}">{{ item2.product_price }}</div>
+                </div>
+            {{ item1.product_name }} is Pricier Than {{ item2.product_name }}
+            </p>
+    {% elif item2.product_price > item1.product_price %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.product_price / item2.product_price)*100 }}%;" aria-valuenow="{{ item1.product_price }}" aria-valuemin="0" aria-valuemax="{{ item2.product_price }}">{{ item1.product_price }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.product_price / item2.product_price)*100 }}%;" aria-valuenow="{{ item2.product_price }}" aria-valuemin="0" aria-valuemax="{{ item2.product_price }}">{{ item2.product_price }}</div>
+            </div>
+            {{ item2.product_name }} is Pricier Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have The Same Price
+        </p>
+    {% endif %}
+    <h3>CPU :</h3>
+    <b>CPU Generation</b>
+    {% if item1.cpu_gen > item2.cpu_gen %}
+            <p>
+            {{ item1.product_name }} is Newer Than {{ item2.product_name }}
+            </p>
+    {% elif item2.cpu_gen > item1.cpu_gen %}
+        <p>
+            {{ item2.product_name }} is Newer Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Are From The Same Generation
+        </p>
+    {% endif %}   
+    <b>CPU Cores</b>
+    {% if item1.cpu_cores > item2.cpu_cores %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_cores / item1.cpu_cores)*100 }}%;" aria-valuenow="{{ item1.cpu_cores }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_cores }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.cpu_cores / item1.cpu_cores)*100 }}%;" aria-valuenow="{{ item2.cpu_cores }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_cores }}</div>
+                </div>
+            {{ item1.product_name }} Has More Cores Than {{ item2.product_name }}
+            </p>
+    {% elif item2.cpu_cores > item1.cpu_cores %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_cores / item2.cpu_cores)*100 }}%;" aria-valuenow="{{ item1.cpu_cores }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_cores }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar " role="progressbar" style="width: {{ (item2.cpu_cores / item2.cpu_cores)*100 }}%;" aria-valuenow="{{ item2.cpu_cores }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_cores }}</div>
+            </div>
+            {{ item2.product_name }} Has More Cores Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have {{ item1.cpu_cores }} Cores
+        </p>
+    {% endif %}
+    <b>CPU Single Core Score</b>
+    {% if item1.cpu_sc_score > item2.cpu_sc_score %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_sc_score / item1.cpu_sc_score)*100 }}%;" aria-valuenow="{{ item1.cpu_sc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_sc_score }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.cpu_sc_score / item1.cpu_sc_score)*100 }}%;" aria-valuenow="{{ item2.cpu_sc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_sc_score }}</div>
+                </div>
+            {{ item1.product_name }} Theorically Has More Single Core Performance Than {{ item2.product_name }}
+            </p>
+    {% elif item2.cpu_sc_score > item1.cpu_sc_score %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_sc_score / item2.cpu_sc_score)*100 }}%;" aria-valuenow="{{ item1.cpu_sc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_sc_score }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.cpu_sc_score / item2.cpu_sc_score)*100 }}%;" aria-valuenow="{{ item2.cpu_sc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_sc_score }}</div>
+            </div>
+            {{ item2.product_name }} Theorically Has More Single Core Performance Than  {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have The Same Performance
+        </p>
+    {% endif %}
+    <b>CPU Mulit-Core Score</b>
+    {% if item1.cpu_mc_score > item2.cpu_mc_score %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_mc_score / item1.cpu_mc_score)*100 }}%;" aria-valuenow="{{ item1.cpu_mc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_mc_score }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.cpu_mc_score / item1.cpu_mc_score)*100 }}%;" aria-valuenow="{{ item2.cpu_mc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_mc_score }}</div>
+                </div>
+            {{ item1.product_name }} Theorically Has More Multi-Core Performace Than {{ item2.product_name }}
+            </p>
+    {% elif item2.cpu_mc_score > item1.cpu_mc_score %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.cpu_mc_score / item2.cpu_mc_score)*100 }}%;" aria-valuenow="{{ item1.cpu_mc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item1.cpu_mc_score }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.cpu_mc_score / item2.cpu_mc_score)*100 }}%;" aria-valuenow="{{ item2.cpu_mc_score }}" aria-valuemin="0" aria-valuemax="100">{{ item2.cpu_mc_score }}</div>
+            </div>
+            {{ item2.product_name }} Theorically Has More Mulit-Core Performace Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have The Same Performace
+        </p>
+    {% endif %}
+    <h3>RAM - Memory :</h3>
+    <b>RAM Ammount</b>
+    {% if item1.ram_amm > item2.ram_amm %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.ram_amm / item1.ram_amm)*100 }}%;" aria-valuenow="{{ item1.ram_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item1.ram_amm }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.ram_amm / item1.ram_amm)*100 }}%;" aria-valuenow="{{ item2.ram_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item2.ram_amm }}</div>
+                </div>
+            {{ item1.product_name }} Has More RAM Than {{ item2.product_name }}
+            </p>
+    {% elif item2.ram_amm > item1.ram_amm %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.ram_amm / item2.ram_amm)*100 }}%;" aria-valuenow="{{ item1.ram_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item1.ram_amm }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.ram_amm / item2.ram_amm)*100 }}%;" aria-valuenow="{{ item2.ram_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item2.ram_amm }}</div>
+            </div>
+            {{ item2.product_name }} Has More RAM Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have {{ item1.ram_amm }} GB of RAM
+        </p>
+    {% endif %}
+    <b>RAM Speed</b>
+    {% if item1.ram_speed > item2.ram_speed %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.ram_speed / item1.ram_speed)*100 }}%;" aria-valuenow="{{ item1.ram_speed }}" aria-valuemin="0" aria-valuemax="100">{{ item1.ram_speed }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.ram_speed / item1.ram_speed)*100 }}%;" aria-valuenow="{{ item2.ram_speed }}" aria-valuemin="0" aria-valuemax="100">{{ item2.ram_speed }}</div>
+                </div>
+            {{ item1.product_name }} Has Faster RAM Than {{ item2.product_name }}
+            </p>
+    {% elif item2.ram_speed > item1.ram_speed %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.ram_speed / item2.ram_speed)*100 }}%;" aria-valuenow="{{ item1.ram_speed }}" aria-valuemin="0" aria-valuemax="100">{{ item1.ram_speed }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.ram_speed / item2.ram_speed)*100 }}%;" aria-valuenow="{{ item2.ram_speed }}" aria-valuemin="0" aria-valuemax="100">{{ item2.ram_speed }}</div>
+            </div>
+            {{ item2.product_name }} Has Faster RAM Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have The Same RAM Speed
+        </p>
+    {% endif %}
+    <h3>Storage :</h3>
+    <b>Primary Storage Ammount :</b>
+    {% if item1.strg_amm > item2.strg_amm %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.strg_amm / item1.strg_amm)*100 }}%;" aria-valuenow="{{ item1.strg_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item1.strg_amm }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.strg_amm / item1.strg_amm)*100 }}%;" aria-valuenow="{{ item2.strg_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item2.strg_amm }}</div>
+                </div>
+            {{ item1.product_name }} Has More Storage Space Than {{ item2.product_name }}
+            </p>
+    {% elif item2.strg_amm > item1.strg_amm %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.strg_amm / item2.strg_amm)*100 }}%;" aria-valuenow="{{ item1.strg_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item1.strg_amm }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.strg_amm / item2.strg_amm)*100 }}%;" aria-valuenow="{{ item2.strg_amm }}" aria-valuemin="0" aria-valuemax="100">{{ item2.strg_amm }}</div>
+            </div>
+            {{ item2.product_name }} Has More Storage Space Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have {{ item1.strg_amm }} GB of Storage
+        </p>
+    {% endif %}
+    <h3>
+        Graphics :
+    </h3>
+    <b>GPU VRAM</b>
+    {% if item1.gpu_vram > item2.gpu_vram %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.gpu_vram / item1.gpu_vram)*100 }}%;" aria-valuenow="{{ item1.gpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item1.gpu_vram }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.gpu_vram / item1.gpu_vram)*100 }}%;" aria-valuenow="{{ item2.gpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item2.gpu_vram }}</div>
+                </div>
+            {{ item1.product_name }} Has More iGPU VRAM Than {{ item2.product_name }}
+            </p>
+    {% elif item2.gpu_vram > item1.gpu_vram %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.gpu_vram / item2.gpu_vram)*100 }}%;" aria-valuenow="{{ item1.gpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item1.gpu_vram }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.gpu_vram / item2.gpu_vram)*100 }}%;" aria-valuenow="{{ item2.gpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item2.gpu_vram }}</div>
+            </div>
+            {{ item2.product_name }} Has More iGPU VRAM Than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have {{ item1.gpu_vram }} GB of VRAM
+        </p>
+    {% endif %}
+    <b>Dedicated GPU</b>
+    {% if item1.dgpu > item2.dgpu %}
+            <p>
+            {{ item1.product_name }} Has A Dedicated GPU : {{ item1.dgpu_name }}
+            </p>
+    {% elif item2.dgpu > item1.dgpu %}
+        <p>
+            {{ item2.product_name }} Has A Dedicated GPU : {{ item2.dgpu_name }}
+        </p>
+    {% elif item2.dgpu == True %}
+        <p>
+            Both Have Dedicated GPUs
+            {{ item1.product_name }} Has A Dedicated GPU : {{ item1.dgpu_name }}
+            {{ item2.product_name }} Has A Dedicated GPU : {{ item2.dgpu_name }}
+            
+        </p>
+    {% else %}
+        <p>
+            Both Don't Have Dedicated GPUs
+        </p>
+    {% endif %}
+    <b>VRAM</b>
+
+    {% if item1.dgpu_vram > item2.dgpu_vram %}
+            <p>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.dgpu_vram / item1.dgpu_vram)*100 }}%;" aria-valuenow="{{ item1.dgpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item1.dgpu_vram }}</div>
+                </div>
+                <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                    <div class="progress-bar" role="progressbar" style="width: {{ (item2.dgpu_vram / item1.dgpu_vram)*100 }}%;" aria-valuenow="{{ item2.dgpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item2.dgpu_vram }}</div>
+                </div>
+            {{ item1.product_name }} Has More VRAM than {{ item2.product_name }}
+            </p>
+    {% elif item2.dgpu_vram > item1.dgpu_vram %}
+        <p>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ (item1.dgpu_vram / item2.dgpu_vram)*100 }}%;" aria-valuenow="{{ item1.dgpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item1.dgpu_vram }}</div>
+            </div>
+            <div class="progress" style="height: 2em; margin-bottom: 1em;" >
+                <div class="progress-bar" role="progressbar" style="width: {{ (item2.dgpu_vram / item2.dgpu_vram)*100 }}%;" aria-valuenow="{{ item2.dgpu_vram }}" aria-valuemin="0" aria-valuemax="100">{{ item2.dgpu_vram }}</div>
+            </div>
+            {{ item2.product_name }} Has More VRAM than {{ item1.product_name }}
+        </p>
+    {% else %}
+        <p>
+            Both Have {{ item1.dgpu_vram }} GB of Dedicated GPU VRAM
+        </p>
+    {% endif %}
+</div>
+
+{% endblock %}
